@@ -17,6 +17,10 @@ fun main(args: Array<String>) {
         }
 
         routing {
+            static("assets") {
+                resources("assets")
+            }
+
             get("/") {
                 call.respond(PebbleContent("index.html", mapOf()))
             }
