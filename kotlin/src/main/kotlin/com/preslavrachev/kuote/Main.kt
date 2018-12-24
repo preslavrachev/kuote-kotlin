@@ -37,6 +37,10 @@ fun main(args: Array<String>) {
             get("/") {
                 call.respond(PebbleContent("index.html", mapOf()))
             }
+
+            get<KuoteResource> {
+                call.respond(PebbleContent("kuote.html", mapOf("content" to "test kuote")))
+            }
         }
     }.start(wait = true)
 }
