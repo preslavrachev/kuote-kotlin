@@ -19,12 +19,15 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    compile "com.fasterxml.jackson.core:jackson-core:2.9.8"
+    compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.8"
     compile "io.ktor:ktor-locations:$ktor_version"
     compile "io.ktor:ktor-server-netty:$ktor_version"
     compile "io.ktor:ktor-html-builder:$ktor_version"
     compile "com.tlogx.ktor:ktor-pebble:0.0.1"
     compile "io.ktor:ktor-freemarker:$ktor_version"
     compile "org.kodein.di:kodein-di-generic-jvm:$kodein_version"
+    compile "com.algolia:algoliasearch:2.21.1"
 }
 
 compileKotlin {

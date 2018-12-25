@@ -1,9 +1,14 @@
 package com.preslavrachev.kuote
 
-data class Kuote(val content: String)
+import com.algolia.search.Index
+import com.fasterxml.jackson.annotation.JsonInclude
 
-class KuoteService {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+data class Kuote(val objectID: String, val content: String)
+
+class KuoteService(val index: Index<Kuote>) {
     fun retrieveKuote(id: String): Kuote {
-        return Kuote(content = "Hello World")
+        val kuote = index.getObject("nytimes.com:the_myth_of_quality_time_3cd46d1a")
+        return kuote.orElseThrow()
     }
 }
