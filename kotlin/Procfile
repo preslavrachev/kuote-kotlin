@@ -1,0 +1,1 @@
+web: ls -la build/libs && java -jar build/libs/kuote-1.0-SNAPSHOT.jar
