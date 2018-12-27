@@ -1,0 +1,9 @@
+setup:
+  config: {}
+build:
+  languages:
+    - java
+  pre:
+    - cd kotlin
+run:
+  web: java -jar /build/libs/kuote-1.0-SNAPSHOT.jar
