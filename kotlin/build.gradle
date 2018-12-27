@@ -26,7 +26,7 @@ dependencies {
     compile "io.ktor:ktor-locations:$ktor_version"
     compile "io.ktor:ktor-server-netty:$ktor_version"
     compile "io.ktor:ktor-html-builder:$ktor_version"
-    compile "com.tlogx.ktor:ktor-pebble:0.0.1"
+    compile "com.tlogx.ktor:ktor-pebble:0.0.2"
     compile "io.ktor:ktor-freemarker:$ktor_version"
     compile "org.kodein.di:kodein-di-generic-jvm:$kodein_version"
     compile "com.algolia:algoliasearch:2.21.1"
