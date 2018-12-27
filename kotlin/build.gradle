@@ -57,3 +57,6 @@ jar {
     // files or particular types at will
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }
+
+/* Used by Heroku for starting the build process */
+task stage(dependsOn: build)
