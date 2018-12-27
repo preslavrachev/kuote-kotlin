@@ -3,5 +3,7 @@ setup:
 build:
   languages:
     - gradle
+  post:
+    - ls -la build/libs    
 run:
-  web: java -jar /build/libs/kuote-1.0-SNAPSHOT.jar
+  web: java -jar build/libs/kuote-1.0-SNAPSHOT.jar
