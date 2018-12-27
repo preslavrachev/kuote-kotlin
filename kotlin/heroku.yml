@@ -2,6 +2,6 @@ setup:
   config: {}
 build:
   languages:
-    - java
+    - gradle
 run:
   web: java -jar /build/libs/kuote-1.0-SNAPSHOT.jar
