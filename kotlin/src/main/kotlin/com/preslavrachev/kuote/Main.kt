@@ -71,7 +71,7 @@ fun Application.routes(injector: Kodein) {
 fun main(args: Array<String>) {
     embeddedServer(
             factory = Netty,
-            port = 8080,
+            port = System.getenv("PORT")?.toInt() ?: 8080,
             module = Application::routes
     ).start(wait = true)
 }
