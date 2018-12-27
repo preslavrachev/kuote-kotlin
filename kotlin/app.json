@@ -1,0 +1,4 @@
+{
+    "image": "heroku/gradle",
+    "addons": ["mongolab:sandbox"]
+}
