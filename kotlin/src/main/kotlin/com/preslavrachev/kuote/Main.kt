@@ -1,9 +1,7 @@
 package com.preslavrachev.kuote
 
-import com.algolia.search.ApacheAPIClientBuilder
-import com.algolia.search.Index
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.module.kotlin.KotlinModule
+import com.mongodb.MongoClientURI
+import com.mongodb.client.MongoCollection
 import com.tlogx.ktor.pebble.Pebble
 import com.tlogx.ktor.pebble.PebbleContent
 import io.ktor.application.Application
@@ -24,19 +22,22 @@ import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
 import org.kodein.di.generic.singleton
+import org.litote.kmongo.KMongo
+import org.litote.kmongo.getCollection
 
 @Location("/k/{id}")
 class KuoteResource(val id: String)
 
 fun initDependencyGraph() = Kodein {
-    bind<Index<Kuote>>() with singleton {
-        val objectMapper = ObjectMapper().registerModule(KotlinModule())
+    bind<MongoCollection<Kuote>>() with singleton {
+        val uri = MongoClientURI(System.getenv("MONGODB"))
+        val kuotesCollection = KMongo.createClient(uri = uri)
+                .getDatabase(uri.database!!)
+                .getCollection<Kuote>("kuotes")
 
-        val apiClient = ApacheAPIClientBuilder(System.getenv("ALGOLIA_API_ID"), System.getenv("ALGOLIA_API_KEY"))
-                .setObjectMapper(objectMapper)
-                .build()
-        apiClient.initIndex("dev_kuote", Kuote::class.java)
+        kuotesCollection
     }
+
     bind<KuoteService>() with singleton { KuoteService(instance()) }
 }
 

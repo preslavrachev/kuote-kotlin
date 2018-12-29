@@ -30,6 +30,7 @@ dependencies {
     compile "io.ktor:ktor-freemarker:$ktor_version"
     compile "org.kodein.di:kodein-di-generic-jvm:$kodein_version"
     compile "com.algolia:algoliasearch:2.21.1"
+    compile "org.litote.kmongo:kmongo:3.9.0"
 }
 
 compileKotlin {

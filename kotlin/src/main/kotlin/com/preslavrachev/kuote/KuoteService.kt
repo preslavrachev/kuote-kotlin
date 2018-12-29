@@ -1,14 +1,16 @@
 package com.preslavrachev.kuote
 
-import com.algolia.search.Index
 import com.fasterxml.jackson.annotation.JsonInclude
+import com.mongodb.client.MongoCollection
+import org.litote.kmongo.eq
+import org.litote.kmongo.findOne
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-data class Kuote(val objectID: String, val content: String)
+data class Kuote(val content: String, val slug: String)
 
-class KuoteService(val index: Index<Kuote>) {
+class KuoteService(val kuotesCollection: MongoCollection<Kuote>) {
     fun retrieveKuote(id: String): Kuote {
-        val kuote = index.getObject("nytimes.com:the_myth_of_quality_time_3cd46d1a")
-        return kuote.orElseThrow { RuntimeException("The kuote with ID: $id is not in the storage!") }
+        val kuote = kuotesCollection.findOne(Kuote::slug eq  "nytimes.com:the_myth_of_quality_time_3cd46d1a")
+        return kuote!!
     }
 }
