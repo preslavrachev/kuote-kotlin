@@ -30,7 +30,7 @@ class KuoteResource(val id: String)
 
 fun initDependencyGraph() = Kodein {
     bind<MongoCollection<Kuote>>() with singleton {
-        val uri = MongoClientURI(System.getenv("MONGODB"))
+        val uri = MongoClientURI(System.getenv("MONGODB_URI"))
         val kuotesCollection = KMongo.createClient(uri = uri)
                 .getDatabase(uri.database!!)
                 .getCollection<Kuote>("kuotes")
