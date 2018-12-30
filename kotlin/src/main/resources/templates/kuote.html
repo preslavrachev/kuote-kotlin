@@ -34,13 +34,23 @@
 
         <!-- Me -->
         <article id="kuote" class="panel">
-            <p>{{ content }}</p>
-            <p>
-                There’s simply no real substitute for physical presence.
-                We delude ourselves when we say otherwise, when we invoke and venerate “quality time,”
-                a shopworn phrase with a debatable promise: that we can plan instances of extraordinary candor,
-                plot episodes of exquisite tenderness, engineer intimacy in an appointed hour.
-            </p>
+            <section id="content">
+                <blockquote>{{ content }}</blockquote>
+            </section>
+            <hr>
+            <section id="source">
+                <div class="row">
+                    <div class="col-2 col-4-medium col-12-small">
+                        <a href="#" class="image fit"><img src="{{ source.image }}" alt=""></a>
+                    </div>
+                    <div class="col-6 col-8-medium col-12-small">
+                        <h3><a href="{{ source.url }}">{{ source.title }}</a></h3>
+                        <small>
+                            {{ source.subtitle }}
+                        </small>
+                    </div>
+                </div>
+            </section>
         </article>
         <article id="home" class="panel">
             <header>

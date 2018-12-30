@@ -63,7 +63,7 @@ fun Application.routes(injector: Kodein) {
 
         get<KuoteResource> {
             val kuote = kuoteService.retrieveKuote(it.id)
-            call.respond(PebbleContent("kuote.html", mapOf("content" to kuote.content)))
+            call.respond(PebbleContent("kuote.html", mapOf("content" to kuote.content, "source" to kuote.source)))
         }
     }
 }

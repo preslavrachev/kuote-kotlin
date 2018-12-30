@@ -6,7 +6,10 @@ import org.litote.kmongo.eq
 import org.litote.kmongo.findOne
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-data class Kuote(val content: String, val slug: String)
+data class KuoteSource(val title: String, val subtitle: String, val image: String)
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+data class Kuote(val content: String, val slug: String, val source: KuoteSource)
 
 class KuoteService(val kuotesCollection: MongoCollection<Kuote>) {
     fun retrieveKuote(id: String): Kuote {
