@@ -328,7 +328,7 @@
 /* Section/Article */
 
 	section, article {
-		margin-bottom: 3em;
+		margin-bottom: 1rem;
 
 		> :last-child,
 		&:last-child {
@@ -847,3 +847,15 @@
 			}
 		}
 	}
+
+/* Media Box */
+.media {
+    .media-left, .media-body {
+        display: table-cell;
+        vertical-align: top;
+    }
+
+    .media-left {
+        padding-right: 1rem;
+    }
+}
